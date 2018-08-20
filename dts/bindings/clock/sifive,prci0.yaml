@@ -5,7 +5,7 @@
 #
 ---
 title: Generic SiFive PRCI (Power, Reset, Clocking, Interrupt) Controller
-id: sifive,freedome300prci0
+id: sifive,prci0
 version: 0.1
 
 description: >
@@ -17,7 +17,7 @@ properties:
       type: string
       category: required
       description: compatible strings
-      constraint: "sifive,freedome300prci0"
+      constraint: "sifive,prci0"
       generation: define
 
     reg:

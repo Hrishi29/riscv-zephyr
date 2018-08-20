@@ -100,7 +100,7 @@
 			reg-names = "control", "mem";
 		};
 		prci: prci@10008000 {
-			compatible = "sifive,freedome300prci0";
+			compatible = "sifive,freedome300prci0", "sifive,prci0";
 			reg = <0x10008000 0x1000>;
 			reg-names = "control";
 		};
