@@ -29,7 +29,7 @@ class DTReg(DTDirective):
     def extract(self, node_address, yaml, prop, names, def_label):
 
         node = reduced[node_address]
-        node_compat = get_compat(node_address)
+        node_compat = get_compat(node_address, yaml)
 
         reg = reduced[node_address]['props']['reg']
         if type(reg) is not list: reg = [ reg ]

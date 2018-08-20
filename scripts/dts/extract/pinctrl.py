@@ -41,7 +41,7 @@ class DTPinCtrl(DTDirective):
         for p in prop_list:
             pin_node_address = phandles[p]
             pin_subnode = '/'.join(pin_node_address.split('/')[-1:])
-            cell_yaml = yaml[get_compat(pin_node_address)]
+            cell_yaml = yaml[get_compat(pin_node_address, yaml)]
             cell_prefix = 'PINMUX'
             post_fix = []
 

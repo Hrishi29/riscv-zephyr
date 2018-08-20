@@ -173,7 +173,7 @@ def extract_controller(node_address, yaml, prop, prop_values, index, def_label, 
 
         # Check node generation requirements
         try:
-            generation = yaml[get_compat(node_address)]['properties'][prop][
+            generation = yaml[get_compat(node_address, yaml)]['properties'][prop][
                 'generation']
         except:
             generation = ''
@@ -212,7 +212,7 @@ def extract_cells(node_address, yaml, prop, prop_values, names, index,
     cell_parent = phandles[prop_values.pop(0)]
 
     try:
-        cell_yaml = yaml[get_compat(cell_parent)]
+        cell_yaml = yaml[get_compat(cell_parent, yaml)]
     except:
         raise Exception(
             "Could not find yaml description for " +
@@ -228,7 +228,7 @@ def extract_cells(node_address, yaml, prop, prop_values, names, index,
         if k[0] == '#' and '-cells' in k:
             num_cells = reduced[cell_parent]['props'].get(k)
     try:
-        generation = yaml[get_compat(node_address)]['properties'][prop][
+        generation = yaml[get_compat(node_address, yaml)]['properties'][prop][
             'generation']
     except:
         generation = ''
@@ -406,7 +406,7 @@ def extract_property(node_compat, yaml, node_address, prop, prop_val, names,
 def extract_node_include_info(reduced, root_node_address, sub_node_address,
                               yaml, y_sub):
     node = reduced[sub_node_address]
-    node_compat = get_compat(root_node_address)
+    node_compat = get_compat(root_node_address, yaml)
     label_override = None
 
     if node_compat not in yaml.keys():
@@ -705,7 +705,7 @@ def load_yaml_descriptions(dts, yaml_dir):
 def generate_node_definitions(yaml_list):
 
     for k, v in reduced.items():
-        node_compat = get_compat(k)
+        node_compat = get_compat(k, yaml_list)
         if node_compat is not None and node_compat in yaml_list:
             extract_node_include_info(
                 reduced, k, k, yaml_list, None)

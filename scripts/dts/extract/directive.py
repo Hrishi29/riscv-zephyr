@@ -34,7 +34,7 @@ class DTDirective(object):
     @staticmethod
     def get_node_label_string(node_address):
         node = reduced[node_address]
-        node_compat = get_compat(node_address)
+        node_compat = get_compat(node_address, [])
         if node_compat is None:
             raise Exception(
                 "No compatible property for node address {}."

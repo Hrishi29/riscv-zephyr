@@ -74,7 +74,7 @@ def get_aliases(root):
         if reduced[k].get('alt_name', None) is not None:
             aliases[k].append(reduced[k]['alt_name'])
 
-def get_compat(node_address):
+def get_compat(node_address, yaml):
     compat = None
 
     try:
@@ -85,7 +85,14 @@ def get_compat(node_address):
             compat = find_parent_prop(node_address, 'compatible')
 
         if isinstance(compat, list):
-            compat = compat[0]
+            print("YAML bindings")
+            print(list(yaml.keys()))
+            print("Compat list")
+            print(compat)
+            for c in compat:
+                if c in yaml:
+                    return c
+            return compat[0]
 
     except:
         pass
