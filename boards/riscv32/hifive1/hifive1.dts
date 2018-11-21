@@ -50,3 +50,18 @@
 	status = "ok";
 };
 
+&pwm0 {
+	status = "ok";
+	clock-frequency = <16000000>;
+};
+
+&pwm1 {
+	status = "ok";
+	clock-frequency = <16000000>;
+};
+
+&pwm2 {
+	status = "ok";
+	clock-frequency = <16000000>;
+};
+
